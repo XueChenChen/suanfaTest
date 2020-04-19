@@ -15,7 +15,7 @@ require ".Util"
 function bubbleSort(arr)
 	if not arr or #arr < 2 then return arr end
 
-	-- for i = 1, #arr do
+	-- for i = 1, #arr-1 do
 	-- 	for j = 1, (#arr)-i do
 	-- 		if arr[j] > arr[j+1] then
 	-- 			swap(arr, j, j+1)
@@ -23,8 +23,8 @@ function bubbleSort(arr)
 	-- 	end
 	-- end
 
-	for i = #arr, 1, -1 do
-		for j = 1, i-1 do
+	for i = #arr-1, 1, -1 do
+		for j = 1, i do
 			if arr[j] > arr[j+1] then
 				swap(arr, j, j+1)
 			end
@@ -84,9 +84,12 @@ function insertionSort(arr)
 end
 
 
+function heapSort(arr)
+	
+end
 
 function goSort(arr)
-	local sortArr = bubbleSort(arr) --冒泡
+	-- local sortArr = bubbleSort(arr) --冒泡
 	-- local sortArr = selectionSort(arr) --选择
 	-- local sortArr = insertionSort(arr) --插入
 	return sortArr
@@ -101,7 +104,7 @@ end
 -- 如果有一个样本使得比对出错，打印样本分析是哪个方法出错
 -- 当样本数量很多时比对测试依然正确，可以确定方法a已经正确。
 function main()
-	local testTime = 500000;
+	local testTime = 500;
 	local arrSize = 100;
 	local maxValue = 100;
 
@@ -117,8 +120,9 @@ function main()
 		if not isEqualArr(sortArr_right, sortArr_test) then
 			bEqual = false
 			print("小火鸡，你写的排序不对哦\n")
-			break
+			return
 		end
+		print("i--", i)
 	end
 
 	print("小火鸡，very good\n")

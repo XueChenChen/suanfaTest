@@ -103,24 +103,32 @@ function rightSort(arr)
     table.sort(arr, function (a, b)
         return a < b
     end)
+
+    return arr
 end
 
 -- 判断两个数组是否一样
 function isEqualArr(arr1, arr2)
     if (not arr1 and arr2) or (arr1 and not arr2) then 
+        print("一个没有值哦！！！", arr1, arr2)
         return false 
     end
 
     if not arr1 and not arr2 then
+        print("两个没有值哦！！！")
         return false
     end
 
     if #arr1 ~= #arr2 then
+        print("俩数组数量不一样哦！！！")
         return false
     end
 
     for i = 1, #arr1 do
         if arr1[i] ~= arr2[i] then
+            print("idx-------", i)
+            print("arr1-------", arr1[i])
+            print("arr2-------", arr2[i])
             return false
         end
     end
